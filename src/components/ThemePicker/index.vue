@@ -133,12 +133,10 @@ export default {
 }
 </script>
 
-<style>
-.theme-picker .el-color-picker__trigger {
-  vertical-align: middle;
-}
+<style lang="sass" scope>
+.theme-picker .el-color-picker__trigger
+  vertical-align: middle
 
-.theme-picker-dropdown .el-color-dropdown__link-btn {
-  display: none;
-}
+.theme-picker-dropdown .el-color-dropdown__link-btn 
+  display: none
 </style>

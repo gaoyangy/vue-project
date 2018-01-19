@@ -50,16 +50,6 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
-    path: '/icon',
-    component: Layout,
-    children: [{
-      path: 'index',
-      component: _import('svg-icons/index'),
-      name: 'icons',
-      meta: { title: 'icons', icon: 'icon', noCache: true }
-    }]
-  },
-  {
     path: '/error-log',
     component: Layout,
     redirect: 'noredirect',
