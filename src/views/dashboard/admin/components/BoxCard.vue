@@ -4,7 +4,6 @@
       <img src='https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png'>
     </div>
     <div style="position:relative;">
-      <pan-thumb class="panThumb" :image="avatar"></pan-thumb>
       <mallki className='mallki-text' text='vue-element-admin'></mallki>
       <div style="padding-top:35px;" class='progress-item'>
         <span>Vue</span>
@@ -28,11 +27,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import PanThumb from '@/components/PanThumb'
 import Mallki from '@/components/TextHoverEffect/Mallki'
 
 export default {
-  components: { PanThumb, Mallki },
+  components: { Mallki },
 
   data() {
     return {
