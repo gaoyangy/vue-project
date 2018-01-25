@@ -36,12 +36,12 @@ function add(arg) {
   })
 }
 // 自动增加路由
-function addRouter(directory) {
-  const key = directory.split('/')[0]
-  if (routes.asyncRouterMap[key]) {
-    console.log('1111')
-  }
-}
+// function addRouter(directory) {
+//   const key = directory.split('/')[0]
+//   if (routes.asyncRouterMap[key]) {
+//     console.log('1111')
+//   }
+// }
 //
 program
   .version('0.1.0')
@@ -50,7 +50,7 @@ program
   .parse(process.argv)
 
 add(program.args).then(info => {
-  addRouter(program.args[0])
+  // addRouter(program.args[0])
   console.log(info)
   return
 }).catch(err => {
