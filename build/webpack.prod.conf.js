@@ -28,8 +28,10 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath(`js/[id].${utils.Date.format('yyMMddhhmm')}.js`),
+    filename: utils.assetsPath(`js/[name].[id].[hash:7].js`),
+    publicPath: config.build.assetsPublicPath,
+    devtoolLineToLine: true
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

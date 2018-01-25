@@ -26,4 +26,3 @@ export function getUserInfo(token) {
     params: { token }
   })
 }
-

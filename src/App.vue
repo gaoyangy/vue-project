@@ -3,11 +3,10 @@
 		<router-view></router-view>
 	</div>
 </template>
-
 <script>
-  export default{
-    name: 'APP'
-  }
+export default{
+  name: 'APP'
+}
 </script>
 <style lang="sass">
 

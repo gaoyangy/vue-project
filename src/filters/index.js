@@ -75,7 +75,7 @@ export function formatTime(time, option) {
   }
 }
 
-/* 数字 格式化*/
+/* 数字 格式化 */
 export function nFormatter(num, digits) {
   const si = [
     { value: 1E18, symbol: 'E' },

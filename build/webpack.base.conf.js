@@ -96,6 +96,7 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
+    console: true,
     child_process: 'empty'
   }
 }
