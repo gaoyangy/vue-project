@@ -1,12 +1,11 @@
 <template>
   <div class="dashboard-container">
     aaa
-    <!-- <component :is="currentRole"></component> -->
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
   name: 'dashboard',
   data() {
@@ -15,12 +14,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'roles'
-    ])
+  
   },
   created() {
 
+  },
+  mounted() {
+    this.$http.post('add/user', {a: 'aaaa'}).then(date => {
+      console.log(data)
+    })
   }
 }
 </script>
