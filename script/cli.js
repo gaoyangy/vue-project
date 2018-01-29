@@ -41,7 +41,7 @@ async function example(directory, name, resolve, reject) {
         })
         fs.readFile('src/lang/zh.js', 'utf-8', (error, data) => {
           if (error) return console.error(error)
-          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1]}',\r\n// routerName不能删除'`)
+          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1]}',\r\n    // routerName不能删除'`)
           fs.outputFile('src/lang/zh.js', datafiles, error => {
             error === null ? resolve('路由名称生成成功') : reject(error)
           })

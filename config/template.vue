@@ -1,4 +1,5 @@
 <template>
+<!-- 命令行生成的模板 -->
   <div class="dashboard-container">
 
   </div>
