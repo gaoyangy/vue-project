@@ -85,4 +85,4 @@ add(program.args).then(info => {
 })
 
 // 使用方式 例如 npm run cli -l app/demo 实例
-// app指的是文件夹demo是文件名称 实例是路由名称
+// app指的是文件夹demo是文件名称 实例是路由名称 如果把实例改为hide则该路由不会自动注册到菜单里面
