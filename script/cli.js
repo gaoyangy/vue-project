@@ -6,10 +6,11 @@ function addRouter(path, name) {
     path: '/${path}',
     component: Layout,
     redirect: '${name}',
+    hidden: '${program.args[1] === 'hide' ? true : false}',
     children: [{
       path: '${name}',
       component: _import('${path}/${name}'),
-      name: 'dashboard',
+      name: '${name}',
       meta: { title: '${name}', icon: 'form' }
     }]
   },
@@ -41,8 +42,9 @@ async function example(directory, name, resolve, reject) {
         })
         fs.readFile('src/lang/zh.js', 'utf-8', (error, data) => {
           if (error) return console.error(error)
-          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1]}',\r\n    // routerName不能删除'`)
+          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1] === 'hide' ? '' : program.args[1]}',\r\n    // routerName不能删除'`)
           fs.outputFile('src/lang/zh.js', datafiles, error => {
+            console.log('这个路由不会出现在菜单里面')
             error === null ? resolve('路由名称生成成功') : reject(error)
           })
         })
@@ -80,5 +82,5 @@ add(program.args).then(info => {
   console.log(err)
 })
 
-// 使用方式 例如 npm run cli -l app/demo
-// app指的是文件夹demo是文件名称
+// 使用方式 例如 npm run cli -l app/demo 实例
+// app指的是文件夹demo是文件名称 实例是路由名称
