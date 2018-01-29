@@ -1,6 +1,21 @@
 const program = require('commander')
 const fs = require('fs-extra')
-
+//
+function addRouter(path, name) {
+  return `{
+    path: '/${path}',
+    component: Layout,
+    redirect: '${name}',
+    hidden: true,
+    children: [{
+      path: '${name}',
+      component: _import('${path}/${name}'),
+      name: 'dashboard',
+      meta: { title: '${name}' }
+    }]
+  },
+  // router-auto不能删除`
+}
 // With async/await:
 async function example(directory, name, resolve, reject) {
   try {
@@ -14,8 +29,15 @@ async function example(directory, name, resolve, reject) {
           fs.outputFile('src/views/' + directory + '/' + name + '.vue', files, err => {
             err === null ? console.log('vue模板生成成功') : reject(err)
             fs.outputFile('src/styles/' + directory + '/' + name + '.sass', '// ' + 'src/views/' + directory + '/' + name + '.vue', err => {
-              err === null ? resolve('sass模板生成成功') : reject(err)
+              err === null ? console.log('sass模板生成成功') : reject(err)
             })
+          })
+        })
+        fs.readFile('src/router/index.js', 'utf-8', (error, data) => {
+          if (error) return console.error(error)
+          const datas = data.replace('// router-auto不能删除', addRouter(directory, name))
+          fs.outputFile('src/router/index.js', datas, error => {
+            error === null ? resolve('路由生成成功') : reject(error)
           })
         })
       })
@@ -39,14 +61,6 @@ function add(arg) {
     }
   })
 }
-// 自动增加路由
-// function addRouter(directory) {
-//   const key = directory.split('/')[0]
-//   if (routes.asyncRouterMap[key]) {
-//     console.log('1111')
-//   }
-// }
-//
 program
   .version('0.1.0')
   .usage('[options] <file ...>')

@@ -53,7 +53,12 @@ export const asyncRouterMap = [
     path: '/error-log',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'log', component: _import('errorLog/index'), name: 'errorLog', meta: { title: 'errorLog', icon: 'bug' }}]
+    children: [{ path: 'log',
+      component: _import('errorLog/index'),
+      name: 'errorLog',
+      meta: { title: 'errorLog', icon: 'bug' }
+    }]
   },
+  // router-auto不能删除
   { path: '*', redirect: '/404', hidden: true }
 ]
