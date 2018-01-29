@@ -59,6 +59,17 @@ export const asyncRouterMap = [
       meta: { title: 'errorLog', icon: 'bug' }
     }]
   },
+  {
+    path: '/app',
+    component: Layout,
+    redirect: 'devn',
+    children: [{
+      path: 'devn',
+      component: _import('app/devn'),
+      name: 'dashboard',
+      meta: { title: 'devn', icon: 'form' }
+    }]
+  },
   // router-auto不能删除
   { path: '*', redirect: '/404', hidden: true }
 ]

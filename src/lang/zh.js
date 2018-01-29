@@ -43,6 +43,8 @@ export default {
     exportZip: 'zip',
     theme: '换肤',
     clipboardDemo: 'clipboard',
+    devn: '运营,
+// routerName不能删除'
     i18n: '国际化'
   },
   navbar: {

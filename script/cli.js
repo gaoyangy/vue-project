@@ -6,12 +6,11 @@ function addRouter(path, name) {
     path: '/${path}',
     component: Layout,
     redirect: '${name}',
-    hidden: true,
     children: [{
       path: '${name}',
       component: _import('${path}/${name}'),
       name: 'dashboard',
-      meta: { title: '${name}' }
+      meta: { title: '${name}', icon: 'form' }
     }]
   },
   // router-auto不能删除`
@@ -37,7 +36,14 @@ async function example(directory, name, resolve, reject) {
           if (error) return console.error(error)
           const datas = data.replace('// router-auto不能删除', addRouter(directory, name))
           fs.outputFile('src/router/index.js', datas, error => {
-            error === null ? resolve('路由生成成功') : reject(error)
+            error === null ? console.log('路由生成成功') : reject(error)
+          })
+        })
+        fs.readFile('src/lang/zh.js', 'utf-8', (error, data) => {
+          if (error) return console.error(error)
+          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1]}',\r\n// routerName不能删除'`)
+          fs.outputFile('src/lang/zh.js', datafiles, error => {
+            error === null ? resolve('路由名称生成成功') : reject(error)
           })
         })
       })
@@ -68,9 +74,11 @@ program
   .parse(process.argv)
 
 add(program.args).then(info => {
-  // addRouter(program.args[0])
-  console.log(info)
+  console.log(program.args[1])
   return
 }).catch(err => {
   console.log(err)
 })
+
+// 使用方式 例如 npm run cli -l app/demo
+// app指的是文件夹demo是文件名称

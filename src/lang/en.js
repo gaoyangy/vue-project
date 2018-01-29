@@ -43,6 +43,7 @@ export default {
     exportZip: 'Zip',
     theme: 'Theme',
     clipboardDemo: 'Clipboard',
+    // routerName不能删除
     i18n: 'I18n'
   },
   navbar: {
