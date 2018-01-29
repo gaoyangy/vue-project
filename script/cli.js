@@ -10,7 +10,7 @@ async function example(directory, name, resolve, reject) {
         fs.readFile(directory + '/' + name, 'utf8', (err, data) => {
           if (err) return console.error(err)
           const fileDate = data.replace(/name:(.*)/, `name: "${name.replace('.vue', '')}",`)
-          fs.outputFile(directory + '/' + name, fileDate, err => {
+          fs.outputFile(directory + '/' + name + '.vue', fileDate, err => {
             err === null ? resolve('模板生成成功') : reject(err)
           })
         })
