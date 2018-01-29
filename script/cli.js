@@ -6,7 +6,7 @@ function addRouter(path, name) {
     path: '/${path}',
     component: Layout,
     redirect: '${name}',
-    hidden: '${program.args[1] === 'hide' ? true : false}',
+    hidden: ${program.args[1] === 'hide' ? 'true' : false},
     children: [{
       path: '${name}',
       component: _import('${path}/${name}'),
@@ -44,7 +44,9 @@ async function example(directory, name, resolve, reject) {
           if (error) return console.error(error)
           const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1] === 'hide' ? '' : program.args[1]}',\r\n    // routerName不能删除'`)
           fs.outputFile('src/lang/zh.js', datafiles, error => {
-            console.log('这个路由不会出现在菜单里面')
+            if (program.args[1] === 'hide') {
+              console.log('这个路由不会出现在菜单里面')
+            }
             error === null ? resolve('路由名称生成成功') : reject(error)
           })
         })
