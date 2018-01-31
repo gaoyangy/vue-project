@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
     "clean": "rimraf dist",
-    "lint": "eslint ./src/**/*.js ./src/**/*.vue --fix",
+    "lint": "eslint --ext ./src/**/*.js ./src/**/*.vue",
     "cli": "node ./script/cli.js"
   },
   "dependencies": {
