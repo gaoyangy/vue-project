@@ -8,7 +8,7 @@
 
 export default {
   name: 'dashboard',
-  data () {
+  data() {
     return {
 
     }
@@ -20,7 +20,7 @@ export default {
 
   },
   mounted() {
-    this.$http.post('add/user', { a: 'aaaa' }).then(date => {
+    this.$http.post('add/user', { a: 'aaaa' }).then(data => {
       console.log(data)
     })
   }
