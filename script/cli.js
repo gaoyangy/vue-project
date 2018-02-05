@@ -10,7 +10,7 @@ function addRouter(path, name) {
     children: [{
       path: '${name}',
       component: _import('${path}/${name}'),
-      name: '${name}',
+      name: '${program.args[1]}${name}',
       meta: { title: '${name}', icon: 'form' }
     }]
   },
@@ -42,7 +42,7 @@ async function example(directory, name, resolve, reject) {
         })
         fs.readFile('src/lang/zh.js', 'utf-8', (error, data) => {
           if (error) return console.error(error)
-          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1] === 'hide' ? '' : program.args[1]}',\r\n    // routerName不能删除'`)
+          const datafiles = data.replace('// routerName不能删除', `${name}: '${program.args[1] === 'hide' ? '' : program.args[0] + program.args[1]}',\r\n    // routerName不能删除'`)
           fs.outputFile('src/lang/zh.js', datafiles, error => {
             if (program.args[1] === 'hide') {
               console.log('这个路由不会出现在菜单里面')
@@ -67,7 +67,7 @@ function add(arg) {
           example(arg[0].split('/')[0], arg[0].split('/')[1], resolve, reject)
         })
     } else {
-      reject('请输入正确参数如: npm run cli -l add/test')
+      reject('请输入正确参数如: npm run cli -l add/test demo')
     }
   })
 }
@@ -77,6 +77,10 @@ program
   .option('-l, --list <items>')
   .parse(process.argv)
 
+if (!program.args[1]) {
+  console.log('请输入正确参数如: npm run cli -l add/test demo')
+  return
+}
 add(program.args).then(info => {
   console.log(program.args[1])
   return
