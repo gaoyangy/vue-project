@@ -67,7 +67,7 @@ function add(arg) {
           example(arg[0].split('/')[0], arg[0].split('/')[1], resolve, reject)
         })
     } else {
-      reject('请输入正确参数如: npm run cli -l add/test demo')
+      reject('请输入正确参数如: npm run cli -l 路径/文件名 路由名称')
     }
   })
 }
@@ -78,7 +78,7 @@ program
   .parse(process.argv)
 
 if (!program.args[1]) {
-  console.log('请输入正确参数如: npm run cli -l add/test demo')
+  console.log('请输入正确参数如: npm run cli -l 路径/文件名 路由名称')
   return
 }
 add(program.args).then(info => {
