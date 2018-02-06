@@ -12,6 +12,7 @@ import './permission' // permission control
 import http from './utils/request'
 import 'normalize.css/normalize.css'// A modern alternative to CSS resets
 import * as filters from './filters' // global filters
+import 'babel-polyfill'
 
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
