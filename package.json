@@ -12,6 +12,12 @@
     "lint": "eslint --ext ./src/**/*.js ./src/**/*.vue",
     "cli": "node ./script/cli.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
@@ -66,6 +72,7 @@
     "file-loader": "1.1.5",
     "friendly-errors-webpack-plugin": "1.6.1",
     "html-webpack-plugin": "2.30.1",
+    "husky": "^0.15.0-rc.6",
     "node-notifier": "5.1.2",
     "node-sass": "^4.7.2",
     "optimize-css-assets-webpack-plugin": "3.2.0",
